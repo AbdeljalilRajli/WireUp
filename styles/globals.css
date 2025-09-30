@@ -1,0 +1,177 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* WireUp Brand Colors - Matte Dark Theme */
+  --background: #262626;
+  --foreground: #ffffff;
+  --card: #262626;
+  --card-foreground: #ffffff;
+  --popover: #262626;
+  --popover-foreground: #ffffff;
+  --primary: #EC6132;
+  --primary-foreground: #ffffff;
+  --secondary: #262626;
+  --secondary-foreground: #ffffff;
+  --muted: #262626;
+  --muted-foreground: #a8a8a8;
+  --accent: #EC6132;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #3e3e3e;
+  --input: #3e3e3e;
+  --ring: #EC6132;
+  --chart-1: #EC6132;
+  --chart-2: #f97316;
+  --chart-3: #eab308;
+  --chart-4: #22c55e;
+  --chart-5: #3b82f6;
+  --radius: 0.75rem;
+  --sidebar: #262626;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #EC6132;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #262626;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #3e3e3e;
+  --sidebar-ring: #EC6132;
+}
+
+.dark {
+  /* Enhanced matte dark mode for WireUp */
+  --background: #262626;
+  --foreground: #ffffff;
+  --card: #262626;
+  --card-foreground: #ffffff;
+  --popover: #262626;
+  --popover-foreground: #ffffff;
+  --primary: #EC6132;
+  --primary-foreground: #ffffff;
+  --secondary: #262626;
+  --secondary-foreground: #ffffff;
+  --muted: #262626;
+  --muted-foreground: #a8a8a8;
+  --accent: #EC6132;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #3e3e3e;
+  --input: #3e3e3e;
+  --ring: #EC6132;
+  --chart-1: #EC6132;
+  --chart-2: #f97316;
+  --chart-3: #eab308;
+  --chart-4: #22c55e;
+  --chart-5: #3b82f6;
+  --sidebar: #262626;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #EC6132;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #262626;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #3e3e3e;
+  --sidebar-ring: #EC6132;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-color: #262626 !important;
+  }
+  html {
+    background-color: #262626 !important;
+  }
+  
+  /* FORCE #262626 EVERYWHERE - OVERRIDE ALL DARK COLORS */
+  
+  body, html, section, div, main {
+    background-color: #262626 !important;
+  }
+  
+  .bg-background, .bg-card, .bg-secondary, .bg-muted {
+    background-color: #262626 !important;
+  }
+  
+  /* Only these should be different */
+  .bg-primary {
+    background-color: #EC6132 !important;
+  }
+  
+  .bg-muted {
+    background-color: #3e3e3e !important;
+  }
+  
+  /* Override any dark theme classes */
+  .dark {
+    background-color: #262626 !important;
+  }
+}
+
+/* NUCLEAR OPTION - FORCE #262626 AFTER ALL OTHER CSS */
+html, body {
+  background: #262626 !important;
+  background-color: #262626 !important;
+}
+
+section, div[class*="bg-"], .bg-background, .bg-card, .bg-secondary {
+  background: #262626 !important;
+  background-color: #262626 !important;
+}
+
+/* Override Tailwind dark mode */
+.dark, .dark *, [data-theme="dark"], [data-theme="dark"] * {
+  background-color: #262626 !important;
+}
+
+/* Override any container backgrounds */
+.container, main, [class*="section"] {
+  background-color: #262626 !important;
+}
+
