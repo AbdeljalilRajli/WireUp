@@ -39,39 +39,39 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-/* Updated dark theme to use #1A1A1A background with proper contrast */
+/* Updated dark theme to use comfortable matte black with proper contrast */
 .dark {
-  --background: oklch(0.12 0 0); /* #1A1A1A dark background */
-  --foreground: oklch(1 0 0); /* Pure white text */
-  --card: oklch(0.16 0 0); /* Slightly lighter than background for cards */
-  --card-foreground: oklch(0.98 0 0); /* Off-white for card text */
-  --popover: oklch(0.14 0 0);
-  --popover-foreground: oklch(0.98 0 0);
+  --background: oklch(0.18 0 0); /* #2D2D2D - Softer matte black background */
+  --foreground: oklch(0.95 0 0); /* Soft white text, not pure white */
+  --card: oklch(0.22 0 0); /* Slightly lighter than background for cards */
+  --card-foreground: oklch(0.92 0 0); /* Comfortable off-white for card text */
+  --popover: oklch(0.2 0 0);
+  --popover-foreground: oklch(0.92 0 0);
   --primary: oklch(0.64 0.18 35); /* WireUp orange #EC6132 */
   --primary-foreground: oklch(1 0 0); /* White text on orange */
-  --secondary: oklch(0.22 0 0); /* Dark gray for secondary elements */
-  --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.2 0 0); /* Muted dark gray */
-  --muted-foreground: oklch(0.65 0 0); /* Muted text */
-  --accent: oklch(0.22 0 0);
-  --accent-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.28 0 0); /* Lighter dark gray for secondary elements */
+  --secondary-foreground: oklch(0.92 0 0);
+  --muted: oklch(0.26 0 0); /* Softer muted dark gray */
+  --muted-foreground: oklch(0.7 0 0); /* More readable muted text */
+  --accent: oklch(0.28 0 0);
+  --accent-foreground: oklch(0.92 0 0);
   --destructive: oklch(0.5 0.2 25);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.25 0 0); /* Subtle borders */
-  --input: oklch(0.22 0 0);
+  --destructive-foreground: oklch(0.92 0 0);
+  --border: oklch(0.32 0 0); /* More visible but subtle borders */
+  --input: oklch(0.28 0 0);
   --ring: oklch(0.64 0.18 35); /* Orange ring for focus states */
   --chart-1: oklch(0.64 0.18 35);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.14 0 0);
-  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar: oklch(0.2 0 0);
+  --sidebar-foreground: oklch(0.92 0 0);
   --sidebar-primary: oklch(0.64 0.18 35);
   --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.22 0 0);
-  --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(0.25 0 0);
+  --sidebar-accent: oklch(0.28 0 0);
+  --sidebar-accent-foreground: oklch(0.92 0 0);
+  --sidebar-border: oklch(0.32 0 0);
   --sidebar-ring: oklch(0.64 0.18 35);
 }
 
@@ -150,12 +150,39 @@
     @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
   }
   
-  .heading-md {
-    @apply text-2xl sm:text-3xl md:text-4xl;
-  }
-  
   /* Responsive grid gaps */
   .grid-responsive {
-    @apply gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12;
+    @apply gap-6 md:gap-8 lg:gap-10;
+  }
+
+  /* Optimized accordion animations for better performance */
+  @keyframes accordion-down {
+    from {
+      height: 0;
+      opacity: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+    to {
+      height: 0;
+      opacity: 0;
+    }
+  }
+
+  .animate-accordion-down {
+    animation: accordion-down 200ms ease-out;
+  }
+
+  .animate-accordion-up {
+    animation: accordion-up 200ms ease-out;
   }
 }
