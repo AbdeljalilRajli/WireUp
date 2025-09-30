@@ -1,7 +1,7 @@
 "use client";
 
 import createGlobe from "cobe";
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export function Globe({
@@ -14,17 +14,7 @@ export function Globe({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerInteracting = useRef<number | null>(null);
   const pointerInteractionMovement = useRef(0);
-  const [r, setR] = useState(0);
-  const lastUpdateTime = useRef(0);
-
-  // Throttled rotation update for better performance
-  const updateRotation = useCallback((newR: number) => {
-    const now = Date.now();
-    if (now - lastUpdateTime.current > 16) { // ~60fps throttling
-      setR(newR);
-      lastUpdateTime.current = now;
-    }
-  }, []);
+  const r = useRef(0);
 
   useEffect(() => {
     let phi = 0;
@@ -43,7 +33,7 @@ export function Globe({
       theta: 0.3,
       dark: 1,
       diffuse: 1.2,
-      mapSamples: 16000,
+      mapSamples: 12000,
       mapBrightness: 6,
       baseColor: [0.3, 0.3, 0.3],
       markerColor: [0.93, 0.38, 0.2],
@@ -60,7 +50,7 @@ export function Globe({
         if (!pointerInteracting.current) {
           phi += 0.005;
         }
-        state.phi = phi + r;
+        state.phi = phi + r.current;
         state.width = width * 2;
         state.height = width * 2;
       },
@@ -73,7 +63,7 @@ export function Globe({
       globe.destroy();
       window.removeEventListener('resize', onResize);
     };
-  }, [config, r, updateRotation]);
+  }, [config]);
 
   return (
     <div className={cn("relative w-full h-full", className)}>
@@ -95,14 +85,14 @@ export function Globe({
           if (pointerInteracting.current !== null) {
             const delta = e.clientX - pointerInteracting.current;
             pointerInteractionMovement.current = delta;
-            updateRotation(delta / 200);
+            r.current = delta / 200;
           }
         }}
         onTouchMove={(e) => {
           if (pointerInteracting.current !== null && e.touches[0]) {
             const delta = e.touches[0].clientX - pointerInteracting.current;
             pointerInteractionMovement.current = delta;
-            updateRotation(delta / 100);
+            r.current = delta / 100;
           }
         }}
         className="w-full h-full opacity-0 transition-opacity duration-500 cursor-grab"
