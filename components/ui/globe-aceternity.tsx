@@ -1,7 +1,7 @@
 "use client";
 
 import createGlobe from "cobe";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 export function Globe({
@@ -33,7 +33,7 @@ export function Globe({
       theta: 0.3,
       dark: 1,
       diffuse: 1.2,
-      mapSamples: 12000,
+      mapSamples: 16000,
       mapBrightness: 6,
       baseColor: [0.3, 0.3, 0.3],
       markerColor: [0.93, 0.38, 0.2],
@@ -106,36 +106,126 @@ export function Globe({
         }}
       />
       
-      {/* Traveling lights effect */}
+      {/* Satellite orbital paths */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-primary rounded-full opacity-60"
+        {/* Orbital ring 1 - Equatorial */}
+        <div 
+          className="absolute inset-0 rounded-full border border-primary/30"
+          style={{
+            width: '100%',
+            height: '100%',
+            animation: 'orbit-ring 20s linear infinite',
+          }}
+        >
+          <div 
+            className="absolute w-2 h-2 bg-primary rounded-full shadow-lg shadow-primary/50"
             style={{
-              animation: `orbit-${i % 4} ${4 + i * 0.5}s linear infinite`,
-              animationDelay: `${i * 0.5}s`,
+              top: '50%',
+              left: '0%',
+              transform: 'translate(-50%, -50%)',
+              animation: 'satellite-move 20s linear infinite',
             }}
           />
-        ))}
+        </div>
+        
+        {/* Orbital ring 2 - Tilted */}
+        <div 
+          className="absolute inset-0 rounded-full border border-primary/20"
+          style={{
+            width: '100%',
+            height: '100%',
+            transform: 'rotateX(30deg) rotateY(45deg)',
+            animation: 'orbit-ring 25s linear infinite reverse',
+          }}
+        >
+          <div 
+            className="absolute w-1.5 h-1.5 bg-primary rounded-full shadow-md shadow-primary/40"
+            style={{
+              top: '50%',
+              left: '0%',
+              transform: 'translate(-50%, -50%)',
+              animation: 'satellite-move 25s linear infinite',
+            }}
+          />
+        </div>
+        
+        {/* Orbital ring 3 - Polar */}
+        <div 
+          className="absolute inset-0 rounded-full border border-primary/25"
+          style={{
+            width: '100%',
+            height: '100%',
+            transform: 'rotateX(90deg)',
+            animation: 'orbit-ring 30s linear infinite',
+          }}
+        >
+          <div 
+            className="absolute w-1.5 h-1.5 bg-primary rounded-full shadow-md shadow-primary/40"
+            style={{
+              top: '50%',
+              left: '0%',
+              transform: 'translate(-50%, -50%)',
+              animation: 'satellite-move 30s linear infinite',
+            }}
+          />
+        </div>
+        
+        {/* Additional orbital paths */}
+        <div 
+          className="absolute inset-0 rounded-full border border-primary/15"
+          style={{
+            width: '110%',
+            height: '110%',
+            top: '-5%',
+            left: '-5%',
+            transform: 'rotateX(60deg) rotateZ(30deg)',
+            animation: 'orbit-ring 35s linear infinite reverse',
+          }}
+        >
+          <div 
+            className="absolute w-1 h-1 bg-primary rounded-full shadow-sm shadow-primary/30"
+            style={{
+              top: '50%',
+              left: '0%',
+              transform: 'translate(-50%, -50%)',
+              animation: 'satellite-move 35s linear infinite',
+            }}
+          />
+        </div>
       </div>
       
       <style jsx>{`
-        @keyframes orbit-0 {
-          0% { transform: rotate(0deg) translateX(250px) rotate(0deg); }
-          100% { transform: rotate(360deg) translateX(250px) rotate(-360deg); }
+        @keyframes orbit-ring {
+          0% { transform: rotateZ(0deg); }
+          100% { transform: rotateZ(360deg); }
         }
-        @keyframes orbit-1 {
-          0% { transform: rotate(90deg) translateX(280px) rotate(-90deg); }
-          100% { transform: rotate(450deg) translateX(280px) rotate(-450deg); }
-        }
-        @keyframes orbit-2 {
-          0% { transform: rotate(180deg) translateX(260px) rotate(-180deg); }
-          100% { transform: rotate(540deg) translateX(260px) rotate(-540deg); }
-        }
-        @keyframes orbit-3 {
-          0% { transform: rotate(270deg) translateX(290px) rotate(-270deg); }
-          100% { transform: rotate(630deg) translateX(290px) rotate(-630deg); }
+        
+        @keyframes satellite-move {
+          0% { 
+            left: 0%; 
+            top: 50%; 
+            opacity: 1;
+          }
+          25% { 
+            left: 50%; 
+            top: 0%; 
+            opacity: 1;
+          }
+          50% { 
+            left: 100%; 
+            top: 50%; 
+            opacity: 1;
+          }
+          75% { 
+            left: 50%; 
+            top: 100%; 
+            opacity: 1;
+          }
+          100% { 
+            left: 0%; 
+            top: 50%; 
+            opacity: 1;
+          }
         }
       `}</style>
     </div>
