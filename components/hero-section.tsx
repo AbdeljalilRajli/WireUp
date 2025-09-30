@@ -97,7 +97,7 @@ export function HeroSection() {
   ]
   
   return (
-    <section className="relative min-h-screen bg-background overflow-hidden flex items-center pb-16" ref={ref}>
+    <section className="relative min-h-screen bg-background overflow-hidden flex items-center section-padding" ref={ref}>
       {/* Background Grid Pattern */}
       <GridPattern 
         className="absolute inset-0 opacity-30" 
@@ -109,8 +109,8 @@ export function HeroSection() {
       {/* Animated Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
       
-      <div className="container relative mx-auto px-4 py-20">
-        <div className="grid items-center gap-16 lg:grid-cols-2">
+      <div className="container relative">
+        <div className="grid items-center grid-responsive lg:grid-cols-2">
           {/* Left Content */}
           <motion.div 
             initial={{ opacity: 0, y: 50 }} 
@@ -134,7 +134,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="mb-6 text-balance text-5xl font-bold leading-tight tracking-tight md:text-6xl lg:text-7xl"
+              className="mb-6 text-balance heading-xl font-bold leading-tight tracking-tight"
             >
               Wire Up Your{" "}
               <span className="relative">
@@ -200,9 +200,9 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
+            className="relative flex items-center justify-center"
           >
-            <div className="relative h-[600px] w-full">
+            <div className="relative w-full max-w-[600px] aspect-square">
               <World data={sampleArcs} globeConfig={globeConfig} />
             </div>
           </motion.div>

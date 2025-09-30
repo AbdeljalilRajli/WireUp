@@ -86,11 +86,11 @@ export function TestimonialsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section id="testimonials" className="relative bg-background py-16 md:py-20 overflow-hidden" ref={ref}>
+    <section id="testimonials" className="relative bg-background section-padding overflow-hidden" ref={ref}>
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
       
-      <div className="container relative mx-auto px-4">
+      <div className="container relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -106,7 +106,7 @@ export function TestimonialsSection() {
             <Star className="mr-2 h-4 w-4 fill-primary" />
             Customer Success Stories
           </motion.div>
-          <h2 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+          <h2 className="mb-6 heading-lg font-bold tracking-tight">
             Loved by{" "}
             <span className="text-primary">talent leaders</span>{" "}
             worldwide
@@ -162,7 +162,7 @@ export function TestimonialsSection() {
         </motion.div>
 
         {/* Grid of testimonials */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-responsive md:grid-cols-2 lg:grid-cols-3">
           {testimonials.filter(t => !t.highlight).map((testimonial, index) => (
             <motion.div
               key={index}

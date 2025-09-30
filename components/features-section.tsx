@@ -89,11 +89,11 @@ export function FeaturesSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section id="features" className="relative bg-background py-16 md:py-20 overflow-hidden" ref={ref}>
+    <section id="features" className="relative bg-background section-padding overflow-hidden" ref={ref}>
       {/* Background Pattern */}
       <GridPattern className="absolute inset-0 opacity-20" />
       
-      <div className="container relative mx-auto px-4">
+      <div className="container relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -103,7 +103,7 @@ export function FeaturesSection() {
           <div className="mb-4 inline-block rounded-md bg-[#efe9e9] px-3 py-1 text-sm font-semibold text-[#262626]">
             Platform Features
           </div>
-          <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="mb-6 heading-lg font-bold tracking-tight">
             Everything you need to{" "}
             <span className="text-primary">hire smarter</span>
           </h2>
@@ -113,7 +113,7 @@ export function FeaturesSection() {
         </motion.div>
 
         {/* Advanced Feature Showcase */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-responsive md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => (
             <motion.div
               key={index}

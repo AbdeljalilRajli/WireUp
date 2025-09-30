@@ -6,8 +6,8 @@ export function Footer() {
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
       
-      <div className="container relative mx-auto px-4 py-16 md:py-20">
-        <div className="grid gap-12 lg:grid-cols-4">
+      <div className="container relative section-padding">
+        <div className="grid grid-responsive lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="mb-6">

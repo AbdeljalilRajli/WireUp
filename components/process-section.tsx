@@ -62,8 +62,8 @@ export function ProcessSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section className="bg-background py-16 md:py-20" ref={ref}>
-      <div className="container mx-auto px-4">
+    <section className="bg-background section-padding" ref={ref}>
+      <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -73,7 +73,7 @@ export function ProcessSection() {
           <div className="mb-4 inline-block rounded-md bg-[#efe9e9] px-3 py-1 text-sm font-semibold text-[#262626]">
             Our Working Process
           </div>
-          <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="mb-6 heading-lg font-bold tracking-tight">
             Step-by-step guide to our proven{" "}
             <span className="text-primary">recruitment methodology</span>
           </h2>

@@ -123,3 +123,39 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  /* Enhanced container with better responsive padding */
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16;
+    max-width: 1400px;
+  }
+  
+  /* Responsive section padding */
+  .section-padding {
+    @apply py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28;
+  }
+  
+  /* Responsive content spacing */
+  .content-spacing {
+    @apply space-y-8 sm:space-y-12 md:space-y-16 lg:space-y-20;
+  }
+  
+  /* Better responsive text sizing */
+  .heading-xl {
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl;
+  }
+  
+  .heading-lg {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+  }
+  
+  .heading-md {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
+  
+  /* Responsive grid gaps */
+  .grid-responsive {
+    @apply gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12;
+  }
+}

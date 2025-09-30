@@ -13,11 +13,11 @@ export function ContactSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section id="contact" className="relative bg-background py-16 md:py-20 overflow-hidden" ref={ref}>
+    <section id="contact" className="relative bg-background section-padding overflow-hidden" ref={ref}>
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
       
-      <div className="container relative mx-auto px-4">
+      <div className="container relative">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -34,7 +34,7 @@ export function ContactSection() {
             <MessageCircle className="mr-2 h-4 w-4" />
             Get In Touch
           </motion.div>
-          <h2 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+          <h2 className="mb-6 heading-lg font-bold tracking-tight">
             Let's Talk About{" "}
             <span className="text-primary">Your Hiring Needs</span>
           </h2>
