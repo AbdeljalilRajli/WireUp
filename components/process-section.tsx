@@ -91,24 +91,24 @@ export function ProcessSection() {
                 className={`overflow-hidden rounded-3xl border-2 border-foreground transition-all ${
                   openIndex === index ? "bg-primary" : "bg-muted"
                 }`}
-                animate={{ height: openIndex === index ? "auto" : "80px" }}
+                animate={{ height: openIndex === index ? "auto" : "96px" }}
               >
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="flex w-full items-center justify-between p-6 text-left"
+                  className="relative flex w-full items-center p-6 pr-24 sm:pr-28 text-left"
                 >
-                  <div className="flex items-center gap-4">
-                    <span className={`text-3xl font-bold ${
+                  <div className="flex items-center gap-4 flex-1 min-w-0">
+                    <span className={`text-3xl font-bold w-10 sm:w-12 text-center ${
                       openIndex === index ? "text-white" : "text-foreground"
                     }`}>{process.number}</span>
-                    <h3 className={`text-xl font-bold ${
+                    <h3 className={`text-xl leading-snug font-bold break-words hyphens-auto text-pretty ${
                       openIndex === index ? "text-white" : "text-foreground"
                     }`}>{process.title}</h3>
                   </div>
                   <motion.div
                     animate={{ rotate: openIndex === index ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
-                    className={`flex h-10 w-10 items-center justify-center rounded-full border-2 ${
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 absolute right-6 sm:right-8 top-1/2 -translate-y-1/2 ${
                       openIndex === index ? "border-white bg-white/20" : "border-foreground bg-background"
                     }`}
                   >
