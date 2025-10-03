@@ -19,11 +19,26 @@ export function Header() {
   }, [])
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" })
-      setMobileMenuOpen(false)
-    }
+    console.log('Scrolling to section:', sectionId)
+    
+    // Close mobile menu first
+    setMobileMenuOpen(false)
+    
+    // Small delay to ensure menu closes before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        console.log('Element found, scrolling...')
+        const navbarHeight = 100
+        const elementPosition = element.offsetTop - navbarHeight
+        window.scrollTo({
+          top: elementPosition,
+          behavior: "smooth"
+        })
+      } else {
+        console.log('Element not found for ID:', sectionId)
+      }
+    }, 100)
   }
 
   return (
@@ -31,11 +46,14 @@ export function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
-        scrolled ? "border-border/60 bg-background/80 backdrop-blur-lg" : "border-border/40 bg-background/95"
-      }`}
+      className="fixed top-0 z-50 w-full px-2 sm:px-4 pt-4"
     >
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+      <div className={`mx-auto w-full max-w-6xl rounded-2xl border-2 border-white/20 transition-all duration-300 ${
+        scrolled 
+          ? "bg-black/70 backdrop-blur-2xl shadow-2xl shadow-black/30" 
+          : "bg-black/50 backdrop-blur-xl"
+      } noise-bg`}>
+        <div className="flex h-16 items-center justify-between px-3 sm:px-6">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -58,15 +76,19 @@ export function Header() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="hidden items-center gap-6 md:flex"
         >
-          {["Features", "Testimonials", "Pricing", "Contact"].map((item, index) => (
+          {["Features", "Process", "Team", "Testimonials", "Contact"].map((item, index) => (
             <motion.button
               key={item}
-              onClick={() => scrollToSection(item.toLowerCase())}
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                scrollToSection(item.toLowerCase())
+              }}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
               whileHover={{ y: -2 }}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
             >
               {item}
             </motion.button>
@@ -98,6 +120,7 @@ export function Header() {
         >
           {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </motion.button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -107,20 +130,20 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="overflow-hidden border-t border-border bg-background md:hidden"
+            className="mx-auto mt-2 w-full max-w-6xl overflow-hidden rounded-2xl border-2 border-white/20 bg-black/70 backdrop-blur-2xl noise-bg md:hidden"
           >
-            <nav className="container mx-auto flex flex-col gap-4 px-4 py-6">
-              {["Features", "Testimonials", "Pricing", "Contact"].map((item, index) => (
-                <motion.button
+            <nav className="flex flex-col gap-4 px-6 py-6">
+              {["Features", "Process", "Team", "Testimonials", "Contact"].map((item, index) => (
+                <button
                   key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className="text-left text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  onClick={() => {
+                    console.log('Mobile menu clicked:', item.toLowerCase())
+                    scrollToSection(item.toLowerCase())
+                  }}
+                  className="text-left text-sm font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer py-2 px-2 rounded hover:bg-white/10"
                 >
                   {item}
-                </motion.button>
+                </button>
               ))}
               <div className="flex flex-col gap-2 pt-4">
                 <Button variant="ghost" size="sm">

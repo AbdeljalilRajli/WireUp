@@ -5,6 +5,7 @@ import { ArrowRight, Zap } from "lucide-react"
 import { motion } from "framer-motion"
 import { useRef } from "react"
 import { GridPattern } from "@/components/ui/grid-pattern"
+import { LogoCarousel } from "@/components/ui/logo-carousel"
 import dynamic from "next/dynamic"
 
 const World = dynamic(() => import("./ui/globe-aceternity").then((m) => m.World), {
@@ -97,7 +98,7 @@ export function HeroSection() {
   ]
   
   return (
-    <section className="relative min-h-screen bg-background overflow-hidden flex items-center section-padding" ref={ref}>
+    <section className="relative min-h-screen bg-background overflow-hidden flex items-center section-padding pt-32 sm:pt-36 md:pt-40 lg:pt-44 xl:pt-48" ref={ref}>
       {/* Background Grid Pattern */}
       <GridPattern 
         className="absolute inset-0 opacity-30" 
@@ -239,22 +240,9 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-24 text-center"
+          className="mt-24"
         >
-          <p className="mb-8 text-sm text-muted-foreground">Trusted by leading tech companies</p>
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-60">
-            {["Microsoft", "Google", "Meta", "Netflix", "Spotify", "Uber"].map((company, index) => (
-              <motion.div
-                key={company}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
-                className="text-lg font-semibold text-foreground hover:text-primary transition-colors cursor-default"
-              >
-                {company}
-              </motion.div>
-            ))}
-          </div>
+          <LogoCarousel />
         </motion.div>
       </div>
     </section>

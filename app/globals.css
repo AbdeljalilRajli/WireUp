@@ -121,6 +121,10 @@
   }
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+  html {
+    overflow-x: hidden;
   }
 }
 
@@ -184,5 +188,67 @@
 
   .animate-accordion-up {
     animation: accordion-up 200ms ease-out;
+  }
+
+  /* Dark wave pattern background */
+  .wave-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.015) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.01) 0%, transparent 50%),
+      linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.005) 50%, transparent 100%);
+    background-size: 800px 800px, 600px 600px, 400px 400px, 100% 100%;
+    background-position: 0% 0%, 100% 100%, 50% 50%, 0% 0%;
+    animation: wave-float 20s ease-in-out infinite;
+  }
+
+  @keyframes wave-float {
+    0%, 100% {
+      background-position: 0% 0%, 100% 100%, 50% 50%, 0% 0%;
+    }
+    25% {
+      background-position: 10% 10%, 90% 90%, 60% 40%, 5% 5%;
+    }
+    50% {
+      background-position: 20% 5%, 80% 95%, 40% 60%, 10% 0%;
+    }
+    75% {
+      background-position: 5% 20%, 95% 80%, 55% 45%, 2% 8%;
+    }
+  }
+
+  /* Glassmorphism utilities */
+  .glass {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-strong {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Subtle noise texture for glassmorphism navbar */
+  .noise-bg {
+    position: relative;
+  }
+
+  .noise-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0);
+    background-size: 20px 20px;
+    border-radius: inherit;
+    pointer-events: none;
+    mix-blend-mode: overlay;
   }
 }

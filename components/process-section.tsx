@@ -62,7 +62,7 @@ export function ProcessSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section className="bg-background section-padding" ref={ref}>
+    <section id="process" className="bg-background section-padding" ref={ref}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

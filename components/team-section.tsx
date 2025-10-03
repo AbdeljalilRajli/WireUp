@@ -69,7 +69,7 @@ export function TeamSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section className="bg-background section-padding" ref={ref}>
+    <section id="team" className="bg-background section-padding" ref={ref}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
