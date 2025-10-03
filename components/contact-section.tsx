@@ -159,12 +159,12 @@ export function ContactSection() {
               <span className="font-medium">hello@wireup.com</span>
             </motion.a>
             <motion.a
-              href="tel:+15551234567"
+              href="tel:+212670277524"
               whileHover={{ scale: 1.05, y: -2 }}
               className="flex items-center gap-3 rounded-xl bg-card/50 px-6 py-4 backdrop-blur-sm border border-border/50 transition-colors hover:border-primary/50"
             >
               <Phone className="h-5 w-5 text-primary" />
-              <span className="font-medium">+1 (555) 123-4567</span>
+              <span className="font-medium">+212 670 277 524</span>
             </motion.a>
           </div>
         </motion.div>

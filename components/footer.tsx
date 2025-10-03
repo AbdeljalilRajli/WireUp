@@ -12,6 +12,18 @@ export function Footer() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const navbarHeight = 100 // Account for floating navbar height
+      const elementPosition = element.offsetTop - navbarHeight
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth"
+      })
+    }
+  }
+
   return (
     <footer className="relative bg-background border-t border-border/50" ref={ref}>
       {/* Background gradient */}
@@ -97,19 +109,24 @@ export function Footer() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
+              <h4 className="text-foreground font-semibold mb-4">Navigation</h4>
               <div className="space-y-4">
-                {["About", "Features", "Pricing"].map((link, index) => (
-                  <motion.a 
-                    key={link}
-                    href="#" 
-                    className="block text-foreground hover:text-primary transition-all duration-300"
+                {[
+                  { name: "Features", id: "features" },
+                  { name: "Process", id: "process" },
+                  { name: "Team", id: "team" }
+                ].map((link, index) => (
+                  <motion.button 
+                    key={link.name}
+                    onClick={() => scrollToSection(link.id)}
+                    className="block text-left text-foreground hover:text-primary transition-all duration-300 cursor-pointer"
                     initial={{ opacity: 0, x: 20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                     transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
                     whileHover={{ x: 5, transition: { duration: 0.2 } }}
                   >
-                    {link}
-                  </motion.a>
+                    {link.name}
+                  </motion.button>
                 ))}
               </div>
             </motion.div>
@@ -120,19 +137,23 @@ export function Footer() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
+              <h4 className="text-foreground font-semibold mb-4">More</h4>
               <div className="space-y-4">
-                {["Gallery", "Team"].map((link, index) => (
-                  <motion.a 
-                    key={link}
-                    href="#" 
-                    className="block text-foreground hover:text-primary transition-all duration-300"
+                {[
+                  { name: "Testimonials", id: "testimonials" },
+                  { name: "Contact Us", id: "contact" }
+                ].map((link, index) => (
+                  <motion.button 
+                    key={link.name}
+                    onClick={() => scrollToSection(link.id)}
+                    className="block text-left text-foreground hover:text-primary transition-all duration-300 cursor-pointer"
                     initial={{ opacity: 0, x: 20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                     transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
                     whileHover={{ x: 5, transition: { duration: 0.2 } }}
                   >
-                    {link}
-                  </motion.a>
+                    {link.name}
+                  </motion.button>
                 ))}
               </div>
             </motion.div>
@@ -201,7 +222,7 @@ export function Footer() {
               </motion.p>
               <div className="flex gap-4">
                 {[
-                  { icon: Github, href: "#", label: "GitHub" },
+                  { icon: Github, href: "https://github.com/AbdeljalilRajli", label: "GitHub" },
                   { icon: Twitter, href: "#", label: "Twitter" },
                   { icon: Linkedin, href: "#", label: "LinkedIn" },
                   { icon: Instagram, href: "#", label: "Instagram" },
@@ -210,6 +231,8 @@ export function Footer() {
                   <motion.a
                     key={label}
                     href={href}
+                    target={href.startsWith('http') ? '_blank' : undefined}
+                    rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted/50 text-muted-foreground transition-all hover:bg-primary hover:text-white"
                     aria-label={label}
                     initial={{ opacity: 0, scale: 0, rotate: -180 }}
