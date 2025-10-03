@@ -176,50 +176,6 @@ export function HeroSection() {
               </Button>
             </motion.div>
 
-            {/* Minimalist Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-12 flex flex-wrap items-center gap-8 md:gap-12"
-            >
-              {[
-                { number: "10K+", label: "Developers" },
-                { number: "500+", label: "Companies" },
-                { number: "95%", label: "Success Rate" }
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ 
-                    duration: 0.4, 
-                    delay: 0.7 + index * 0.1,
-                    ease: "easeOut"
-                  }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    transition: { duration: 0.2 }
-                  }}
-                  className="group text-center"
-                >
-                  <div className="relative">
-                    {/* Number */}
-                    <div className="text-3xl md:text-4xl font-bold text-primary mb-1 transition-colors group-hover:text-primary/80">
-                      {stat.number}
-                    </div>
-                    
-                    {/* Label */}
-                    <div className="text-sm text-muted-foreground font-medium">
-                      {stat.label}
-                    </div>
-                    
-                    {/* Subtle underline on hover */}
-                    <div className="absolute -bottom-1 left-1/2 h-0.5 w-0 bg-primary/30 transition-all duration-300 group-hover:w-full group-hover:left-0" />
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
           </motion.div>
 
           {/* Right Globe Animation */}
