@@ -88,7 +88,7 @@ export function Header() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
               whileHover={{ y: -2 }}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
+              className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer leading-relaxed"
             >
               {item}
             </motion.button>
@@ -140,7 +140,7 @@ export function Header() {
                     console.log('Mobile menu clicked:', item.toLowerCase())
                     scrollToSection(item.toLowerCase())
                   }}
-                  className="text-left text-sm font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer py-2 px-2 rounded hover:bg-white/10"
+                  className="text-left text-base font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer py-3 px-3 rounded hover:bg-white/10 leading-relaxed"
                 >
                   {item}
                 </button>
