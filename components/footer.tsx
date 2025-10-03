@@ -5,12 +5,19 @@ import { Input } from "@/components/ui/input"
 import { Zap, Github, Twitter, Linkedin, Instagram, Globe } from "lucide-react"
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useState, useEffect } from "react"
 import Image from "next/image"
+import { useTheme } from "next-themes"
 
 export function Footer() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const { theme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -188,7 +195,7 @@ export function Footer() {
                   }}
                 >
                   <Image
-                    src="/logo-white.png"
+                    src={mounted && theme === 'light' ? "/logo-dark.png" : "/logo-white.png"}
                     alt="WireUp Logo"
                     width={120}
                     height={40}
@@ -233,7 +240,7 @@ export function Footer() {
                     href={href}
                     target={href.startsWith('http') ? '_blank' : undefined}
                     rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted/50 text-muted-foreground transition-all hover:bg-primary hover:text-white"
+                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white transition-all hover:bg-black hover:text-white"
                     aria-label={label}
                     initial={{ opacity: 0, scale: 0, rotate: -180 }}
                     animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : { opacity: 0, scale: 0, rotate: -180 }}

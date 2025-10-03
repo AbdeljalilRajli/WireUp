@@ -157,7 +157,7 @@ export function LogoCarousel({ className = "" }: LogoCarouselProps) {
                   delay: index * 0.1,
                   ease: "easeOut"
                 }}
-                className="flex items-center justify-center text-white hover:text-primary transition-colors duration-300 cursor-default"
+                className="flex items-center justify-center text-black dark:text-white hover:text-primary transition-colors duration-300 cursor-default"
               >
                 {company.logo}
               </motion.div>

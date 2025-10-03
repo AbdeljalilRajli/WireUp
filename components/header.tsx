@@ -5,10 +5,18 @@ import { Menu, X } from "lucide-react"
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
+import { ThemeSwitcher } from "@/components/ui/theme-switcher"
+import { useTheme } from "next-themes"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { theme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,10 +56,10 @@ export function Header() {
       transition={{ duration: 0.5 }}
       className="fixed top-0 z-50 w-full px-2 sm:px-4 pt-4"
     >
-      <div className={`mx-auto w-full max-w-6xl rounded-2xl border-2 border-white/20 transition-all duration-300 ${
+      <div className={`mx-auto w-full max-w-6xl rounded-2xl border-2 transition-all duration-300 ${
         scrolled 
-          ? "bg-black/70 backdrop-blur-2xl shadow-2xl shadow-black/30" 
-          : "bg-black/50 backdrop-blur-xl"
+          ? "border-black/10 dark:border-white/20 bg-white/80 dark:bg-black/70 backdrop-blur-2xl shadow-2xl shadow-black/10 dark:shadow-black/30" 
+          : "border-black/5 dark:border-white/20 bg-white/60 dark:bg-black/50 backdrop-blur-xl"
       } noise-bg`}>
         <div className="flex h-16 items-center justify-between px-3 sm:px-6">
         <motion.div
@@ -61,7 +69,7 @@ export function Header() {
           className="flex items-center gap-2"
         >
           <Image
-            src="/logo-white.png"
+            src={mounted && theme === 'light' ? "/logo-dark.png" : "/logo-white.png"}
             alt="WireUp Logo"
             width={40}
             height={40}
@@ -99,8 +107,15 @@ export function Header() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="hidden items-center gap-3 md:flex"
+          className="hidden items-center gap-4 md:flex"
         >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <ThemeSwitcher />
+          </motion.div>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button variant="ghost" size="sm">
               Sign In
@@ -111,15 +126,23 @@ export function Header() {
           </motion.div>
         </motion.div>
 
-        {/* Mobile Menu Button */}
-        <motion.button
-          whileTap={{ scale: 0.9 }}
-          className="md:hidden"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </motion.button>
+        {/* Mobile Menu Button & Theme Switcher */}
+        <div className="flex items-center gap-3 md:hidden">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <ThemeSwitcher />
+          </motion.div>
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </motion.button>
+        </div>
         </div>
       </div>
 
@@ -130,7 +153,7 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="mx-auto mt-2 w-full max-w-6xl overflow-hidden rounded-2xl border-2 border-white/20 bg-black/70 backdrop-blur-2xl noise-bg md:hidden"
+            className="mx-auto mt-2 w-full max-w-6xl overflow-hidden rounded-2xl border-2 border-black/10 dark:border-white/20 bg-white/80 dark:bg-black/70 backdrop-blur-2xl noise-bg md:hidden"
           >
             <nav className="flex flex-col gap-4 px-6 py-6">
               {["Features", "Process", "Team", "Testimonials", "Contact"].map((item, index) => (
@@ -140,12 +163,12 @@ export function Header() {
                     console.log('Mobile menu clicked:', item.toLowerCase())
                     scrollToSection(item.toLowerCase())
                   }}
-                  className="text-left text-base font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer py-3 px-3 rounded hover:bg-white/10 leading-relaxed"
+                  className="text-left text-base font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer py-3 px-3 rounded hover:bg-black/5 dark:hover:bg-white/10 leading-relaxed"
                 >
                   {item}
                 </button>
               ))}
-              <div className="flex flex-col gap-2 pt-4">
+              <div className="flex flex-col gap-3 pt-4">
                 <Button variant="ghost" size="sm">
                   Sign In
                 </Button>
