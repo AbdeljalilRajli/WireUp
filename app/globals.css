@@ -122,6 +122,11 @@
   body {
     @apply bg-background text-foreground;
     overflow-x: hidden;
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0),
+      radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0);
+    background-size: 6px 6px, 18px 18px;
+    background-position: 0 0, 3px 3px;
   }
   html {
     overflow-x: hidden;
@@ -190,30 +195,35 @@
     animation: accordion-up 200ms ease-out;
   }
 
-  /* Dark wave pattern background */
+  /* Dark wave pattern background with subtle noise texture */
   .wave-pattern {
     background-image: 
+      /* Subtle noise texture overlay */
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0),
+      /* Original wave patterns */
       radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
       radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.015) 0%, transparent 50%),
       radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.01) 0%, transparent 50%),
       linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.005) 50%, transparent 100%);
-    background-size: 800px 800px, 600px 600px, 400px 400px, 100% 100%;
-    background-position: 0% 0%, 100% 100%, 50% 50%, 0% 0%;
+    background-size: 
+      3px 3px, /* Small noise texture */
+      800px 800px, 600px 600px, 400px 400px, 100% 100%;
+    background-position: 0% 0%, 0% 0%, 100% 100%, 50% 50%, 0% 0%;
     animation: wave-float 20s ease-in-out infinite;
   }
 
   @keyframes wave-float {
     0%, 100% {
-      background-position: 0% 0%, 100% 100%, 50% 50%, 0% 0%;
+      background-position: 0% 0%, 0% 0%, 100% 100%, 50% 50%, 0% 0%;
     }
     25% {
-      background-position: 10% 10%, 90% 90%, 60% 40%, 5% 5%;
+      background-position: 0% 0%, 10% 10%, 90% 90%, 60% 40%, 5% 5%;
     }
     50% {
-      background-position: 20% 5%, 80% 95%, 40% 60%, 10% 0%;
+      background-position: 0% 0%, 20% 5%, 80% 95%, 40% 60%, 10% 0%;
     }
     75% {
-      background-position: 5% 20%, 95% 80%, 55% 45%, 2% 8%;
+      background-position: 0% 0%, 5% 20%, 95% 80%, 55% 45%, 2% 8%;
     }
   }
 
@@ -230,6 +240,30 @@
     -webkit-backdrop-filter: blur(24px);
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Enhanced background texture similar to Mono UI */
+  .mono-texture {
+    position: relative;
+  }
+
+  .mono-texture::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      /* More visible noise pattern */
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0),
+      radial-gradient(circle at 3px 3px, rgba(255,255,255,0.04) 1px, transparent 0);
+    background-size: 4px 4px, 12px 12px;
+    background-position: 0 0, 2px 2px;
+    pointer-events: none;
+    opacity: 1;
+    z-index: 1;
+    mix-blend-mode: screen;
   }
 
   /* Subtle noise texture for glassmorphism navbar */
