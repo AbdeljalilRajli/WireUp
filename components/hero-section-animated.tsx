@@ -309,7 +309,7 @@ export function HeroSectionAnimated() {
           Connect with top employers and accelerate your career journey.
         </motion.p>
 
-        {/* CTA Button - V0 Style */}
+        {/* CTA Button - Original Style */}
         <motion.button
           className="relative bg-primary text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-medium tracking-wide transition-colors duration-200 hover:bg-primary/90 flex items-center gap-2"
           initial={{ opacity: 0, y: 20 }}
