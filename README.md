@@ -1,14 +1,14 @@
 # WireUp
 
-A modern AI-powered recruitment platform that connects exceptional IT talent with innovative companies.
+A modern landing page for an AI-powered recruitment platform that will connect exceptional IT talent with innovative companies.
 
 ## ✨ Features
 
-- **AI-Driven Matching** - Intelligent candidate-job matching algorithms
-- **Automated Workflows** - Streamlined recruitment processes
-- **Data-Driven Insights** - Analytics and reporting for better hiring decisions
-- **Modern UI/UX** - Clean, responsive design with smooth animations
-- **Interactive Globe** - 3D visualization of global connections
+- **Modern Landing Page** - Showcase of the upcoming recruitment platform
+- **Interactive Animations** - Smooth wire animations and transitions
+- **Responsive Design** - Works perfectly on all devices
+- **3D Globe Visualization** - Interactive globe showing global connections
+- **Clean UI/UX** - Professional design with glassmorphism effects
 
 ## 🚀 Tech Stack
 
@@ -60,14 +60,14 @@ WireUp/
 └── styles/                # Global styles
 ```
 
-## 🎨 Key Components
+## 🎨 Landing Page Sections
 
-- **Hero Section** - Animated landing with wire animations
-- **Features Section** - Platform capabilities showcase
-- **Process Section** - Step-by-step workflow
-- **Team Section** - Meet the team
-- **Testimonials** - Client feedback
-- **Contact Section** - Get in touch form
+- **Hero Section** - Animated introduction with wire animations
+- **Features Section** - Upcoming platform capabilities
+- **Process Section** - How the platform will work
+- **Team Section** - Meet the team behind WireUp
+- **Testimonials** - Future client testimonials
+- **Contact Section** - Get in touch for early access
 
 ## 🌐 Deployment
 
@@ -88,4 +88,4 @@ This is a private project. For questions or suggestions, please contact the deve
 
 ---
 
-Built with ❤️ by the WireUp team
+Built with ❤️ by **Abdeljalil Rajli**
