@@ -125,18 +125,20 @@ export function ContactSection() {
                 />
               </div>
 
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+              <motion.button
+                className="w-full bg-primary hover:bg-primary/90 text-white px-6 py-4 rounded-lg text-base font-medium tracking-wide transition-colors duration-200 flex items-center justify-center gap-2"
+                whileHover={{
+                  scale: 1.02,
+                  transition: { duration: 0.2 }
+                }}
+                whileTap={{
+                  scale: 0.98,
+                  transition: { duration: 0.1 }
+                }}
               >
-                <Button 
-                  size="lg" 
-                  className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-4 text-lg group"
-                >
-                  <Send className="mr-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                  Send Message
-                </Button>
-              </motion.div>
+                <Send className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                Send Message
+              </motion.button>
             </form>
           </div>
         </motion.div>

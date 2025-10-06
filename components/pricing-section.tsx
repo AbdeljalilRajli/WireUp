@@ -71,6 +71,9 @@ export function PricingSection() {
           transition={{ duration: 0.6 }}
           className="mx-auto mb-16 max-w-3xl text-center"
         >
+          <div className="mb-4 inline-block rounded-full bg-primary/10 backdrop-blur-sm border border-primary/20 px-4 py-2 text-sm font-semibold text-primary">
+            Pricing Plans
+          </div>
           <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             Simple, transparent pricing
           </h2>
@@ -134,11 +137,20 @@ export function PricingSection() {
                     </ul>
                   </CardContent>
                   <CardFooter>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full">
-                      <Button className="w-full" variant={plan.popular ? "default" : "outline"}>
-                        {plan.cta}
-                      </Button>
-                    </motion.div>
+                    <motion.button
+                      className={`group relative w-full px-6 py-2.5 rounded-full text-sm font-semibold flex items-center justify-center gap-2 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 ${
+                        plan.popular 
+                          ? "bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white border border-orange-400/30 shadow-lg shadow-orange-500/25 hover:shadow-xl hover:shadow-orange-500/40" 
+                          : "bg-transparent border-2 border-primary/20 text-foreground hover:bg-primary/10"
+                      }`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {plan.cta}
+                      {plan.popular && (
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      )}
+                    </motion.button>
                   </CardFooter>
                 </Card>
               </motion.div>

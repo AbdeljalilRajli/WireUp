@@ -42,21 +42,33 @@ export function CtaSection() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="flex flex-col items-center justify-center gap-4 sm:flex-row"
             >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" variant="secondary" className="group">
-                  Join WireUp Today
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-primary-foreground/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10"
-                >
-                  Schedule a Demo
-                </Button>
-              </motion.div>
+              <motion.button
+                className="bg-white text-primary px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-medium tracking-wide transition-colors duration-200 hover:bg-white/90 flex items-center gap-2"
+                whileHover={{
+                  scale: 1.02,
+                  transition: { duration: 0.2 }
+                }}
+                whileTap={{
+                  scale: 0.98,
+                  transition: { duration: 0.1 }
+                }}
+              >
+                Join WireUp Today
+                <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+              </motion.button>
+              <motion.button
+                className="bg-transparent text-white border-2 border-white/30 hover:border-white/50 px-6 sm:px-8 py-2 sm:py-2.5 rounded-lg text-sm sm:text-base font-medium tracking-wide transition-colors duration-200 hover:bg-white/5 flex items-center gap-2"
+                whileHover={{
+                  scale: 1.02,
+                  transition: { duration: 0.2 }
+                }}
+                whileTap={{
+                  scale: 0.98,
+                  transition: { duration: 0.1 }
+                }}
+              >
+                Schedule a Demo
+              </motion.button>
             </motion.div>
           </div>
 

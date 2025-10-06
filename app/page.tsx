@@ -1,5 +1,5 @@
 import { Header } from "@/components/header"
-import { HeroSection } from "@/components/hero-section"
+import { HeroSectionAnimated } from "@/components/hero-section-animated"
 import { FeaturesSection } from "@/components/features-section"
 import { ProcessSection } from "@/components/process-section"
 import { TeamSection } from "@/components/team-section"
@@ -12,7 +12,7 @@ export default function Home() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <HeroSection />
+        <HeroSectionAnimated />
         <FeaturesSection />
         <ProcessSection />
         <TeamSection />

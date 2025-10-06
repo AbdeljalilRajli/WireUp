@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
-import { Linkedin, Mail, Award, Star } from "lucide-react"
+import { Linkedin, Mail, Award, Star, Users, ArrowRight } from "lucide-react"
 
 const team = [
   {
@@ -77,7 +77,8 @@ export function TeamSection() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <div className="mb-4 inline-block rounded-md bg-[#efe9e9] px-3 py-1 text-sm font-semibold text-[#262626]">
+          <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 backdrop-blur-sm border border-primary/20 px-4 py-2 text-sm font-semibold text-primary">
+            <Users className="mr-2 h-4 w-4" />
             Team
           </div>
           <h2 className="mb-6 heading-lg font-bold tracking-tight">
@@ -105,12 +106,20 @@ export function TeamSection() {
                       {member.avatar}
                     </div>
                     <div className="flex gap-2">
-                      <button className="flex h-8 w-8 items-center justify-center rounded-lg bg-muted/50 text-muted-foreground hover:bg-primary hover:text-white transition-colors">
+                      <motion.button 
+                        className="flex h-8 w-8 items-center justify-center rounded-lg bg-muted/50 text-muted-foreground hover:bg-primary hover:text-white transition-colors"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
                         <Linkedin className="h-4 w-4" />
-                      </button>
-                      <button className="flex h-8 w-8 items-center justify-center rounded-lg bg-muted/50 text-muted-foreground hover:bg-primary hover:text-white transition-colors">
+                      </motion.button>
+                      <motion.button 
+                        className="flex h-8 w-8 items-center justify-center rounded-lg bg-muted/50 text-muted-foreground hover:bg-primary hover:text-white transition-colors"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
                         <Mail className="h-4 w-4" />
-                      </button>
+                      </motion.button>
                     </div>
                   </div>
                   
@@ -121,10 +130,10 @@ export function TeamSection() {
                     </div>
                     
                     <div className="flex gap-2">
-                      <span className="rounded-md bg-muted px-2 py-1 text-xs font-medium text-foreground">
+                      <span className="rounded-md bg-muted/80 px-2.5 py-1 text-xs font-medium text-foreground">
                         {member.experience}
                       </span>
-                      <span className="rounded-md bg-muted px-2 py-1 text-xs font-medium text-foreground">
+                      <span className="rounded-md bg-muted/80 px-2.5 py-1 text-xs font-medium text-foreground">
                         {member.speciality}
                       </span>
                     </div>
@@ -143,9 +152,20 @@ export function TeamSection() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="mt-12 text-center"
         >
-          <button className="rounded-full border-2 border-foreground bg-foreground px-8 py-3 font-semibold text-background transition-all hover:bg-background hover:text-foreground">
+          <motion.button
+            className="relative bg-primary text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-medium tracking-wide transition-colors duration-200 hover:bg-primary/90 flex items-center gap-2 mx-auto"
+            whileHover={{
+              scale: 1.02,
+              transition: { duration: 0.2 }
+            }}
+            whileTap={{
+              scale: 0.98,
+              transition: { duration: 0.1 }
+            }}
+          >
             See all team
-          </button>
+            <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </motion.button>
         </motion.div>
       </div>
     </section>

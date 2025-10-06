@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef, useState } from "react"
-import { Plus, Minus } from "lucide-react"
+import { Plus, Minus, ListTodo } from "lucide-react"
 
 const processes = [
   {
@@ -70,7 +70,8 @@ export function ProcessSection() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <div className="mb-4 inline-block rounded-md bg-[#efe9e9] px-3 py-1 text-sm font-semibold text-[#262626]">
+          <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 backdrop-blur-sm border border-primary/20 px-4 py-2 text-sm font-semibold text-primary">
+            <ListTodo className="mr-2 h-4 w-4" />
             Our Working Process
           </div>
           <h2 className="mb-6 heading-lg font-bold tracking-tight">

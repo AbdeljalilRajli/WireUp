@@ -1,7 +1,7 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight, Brain, Search, Users, TrendingUp, Zap, Database, Target, Shield, Clock } from "lucide-react"
+import { ArrowRight, Brain, Search, Users, TrendingUp, Zap, Database, Target, Shield, Clock, Star } from "lucide-react"
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
@@ -100,7 +100,8 @@ export function FeaturesSection() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <div className="mb-4 inline-block rounded-md bg-[#efe9e9] px-3 py-1 text-sm font-semibold text-[#262626]">
+          <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 backdrop-blur-sm border border-primary/20 px-4 py-2 text-sm font-semibold text-primary">
+            <Star className="mr-2 h-4 w-4 fill-primary" />
             Platform Features
           </div>
           <h2 className="mb-6 heading-lg font-bold tracking-tight">
@@ -248,12 +249,18 @@ export function FeaturesSection() {
             Ready to transform your hiring process?
           </p>
           <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-lg font-medium text-white transition-colors hover:bg-primary/90"
+            className="relative bg-primary text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-medium tracking-wide transition-colors duration-200 hover:bg-primary/90 flex items-center gap-2 mx-auto"
+            whileHover={{
+              scale: 1.02,
+              transition: { duration: 0.2 }
+            }}
+            whileTap={{
+              scale: 0.98,
+              transition: { duration: 0.1 }
+            }}
           >
             Get Started Today
-            <ArrowRight className="h-5 w-5" />
+            <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
           </motion.button>
         </motion.div>
       </div>

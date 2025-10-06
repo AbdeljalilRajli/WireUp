@@ -92,14 +92,19 @@ export function Footer() {
                 {/* Glowing border effect */}
                 <div className="absolute inset-0 rounded-md border-2 border-primary/30 opacity-0 transition-opacity duration-300 pointer-events-none focus-within:opacity-100" />
               </div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <motion.button
+                className="relative bg-primary text-white px-8 py-3.5 rounded-lg text-lg font-medium tracking-wide transition-colors duration-200 hover:bg-primary/90 flex items-center gap-2"
+                whileHover={{
+                  scale: 1.02,
+                  transition: { duration: 0.2 }
+                }}
+                whileTap={{
+                  scale: 0.98,
+                  transition: { duration: 0.1 }
+                }}
               >
-                <Button className="h-14 bg-primary hover:bg-primary/90 text-white px-10 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
-                  Get Started
-                </Button>
-              </motion.div>
+                Get Started
+              </motion.button>
             </motion.div>
           </motion.div>
 

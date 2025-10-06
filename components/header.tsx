@@ -116,13 +116,30 @@ export function Header() {
           >
             <ThemeSwitcher />
           </motion.div>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button variant="ghost" size="sm">
+          <motion.div 
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Button 
+              variant="outline" 
+              size="sm"
+              className="border-2 border-border/50 hover:border-primary/50 hover:bg-transparent"
+            >
               Sign In
             </Button>
           </motion.div>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button size="sm">Get Started</Button>
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Button 
+              size="sm"
+              className="bg-primary hover:bg-primary/90"
+            >
+              Get Started
+            </Button>
           </motion.div>
         </motion.div>
 
@@ -169,10 +186,19 @@ export function Header() {
                 </button>
               ))}
               <div className="flex flex-col gap-3 pt-4">
-                <Button variant="ghost" size="sm">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  className="w-full border-2 border-border/50 hover:border-primary/50 hover:bg-transparent"
+                >
                   Sign In
                 </Button>
-                <Button size="sm">Get Started</Button>
+                <Button 
+                  size="sm"
+                  className="w-full bg-primary hover:bg-primary/90"
+                >
+                  Get Started
+                </Button>
               </div>
             </nav>
           </motion.div>
