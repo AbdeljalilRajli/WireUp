@@ -2,15 +2,29 @@
 
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Star } from "lucide-react"
-import { LineShadowText } from "@/components/ui/line-shadow-text"
 import { ShimmerButton } from "@/components/ui/shimmer-button"
 import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
 
 export function HeroSectionAnimated() {
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  useEffect(() => {
+    // Ensure everything loads together
+    const timer = setTimeout(() => {
+      setIsLoaded(true)
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [])
   return (
     <div className="relative min-h-screen overflow-hidden bg-background dark:bg-background">
       {/* Animated Wire Background */}
-      <div className="absolute inset-0">
+      <motion.div 
+        className="absolute inset-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isLoaded ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         <svg
           className="absolute inset-0 w-full h-full"
           viewBox="0 0 1200 800"
@@ -251,7 +265,7 @@ export function HeroSectionAnimated() {
             </g>
           </g>
         </svg>
-      </div>
+      </motion.div>
 
       {/* Main Content */}
       <main className="relative z-10 flex flex-col items-start justify-center min-h-screen px-4 sm:px-6 lg:px-12 max-w-6xl mx-auto -mt-16 sm:pt-20 md:pt-24 lg:pt-28">
@@ -259,8 +273,8 @@ export function HeroSectionAnimated() {
         <motion.div 
           className="mb-4 sm:mb-8"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
         >
           <div className="inline-flex items-center rounded-full bg-primary/10 backdrop-blur-sm border border-primary/20 px-4 py-2 text-sm font-semibold text-primary">
             <Star className="mr-2 h-4 w-4 fill-primary" />
@@ -272,22 +286,22 @@ export function HeroSectionAnimated() {
         <motion.h1 
           className="text-foreground text-4xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-8xl font-bold leading-tight mb-4 sm:mb-6 text-balance"
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
           Connect Your Career
           <br />
           with{" "}
-          <LineShadowText className="italic font-light text-primary" shadowColor="#EC6132">
+          <span className="text-primary">
             WireUp
-          </LineShadowText>
+          </span>
         </motion.h1>
 
         <motion.p 
           className="text-muted-foreground text-sm sm:text-base md:text-sm lg:text-2xl mb-6 sm:mb-8 max-w-2xl text-pretty"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
           Join thousands of professionals who found their perfect match.
           <br className="hidden sm:block" />
@@ -299,8 +313,8 @@ export function HeroSectionAnimated() {
         <motion.button
           className="relative bg-primary text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-medium tracking-wide transition-colors duration-200 hover:bg-primary/90 flex items-center gap-2"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.0 }}
+          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           whileHover={{
             scale: 1.02,
             transition: { duration: 0.2 }
