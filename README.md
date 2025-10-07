@@ -4,7 +4,7 @@
 
 *Connect Talent. Power Growth.*
 
-![WireUp Mockup](./wireup-mockup-laptop.webp)
+<img src="./wireup-mockup-laptop.webp" alt="WireUp Application Mockup" width="100%" />
 
 **Modern AI-powered recruitment platform connecting exceptional IT talent with innovative companies.**
 
