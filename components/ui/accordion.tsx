@@ -19,7 +19,7 @@ function AccordionItem({
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
-      className={cn('border border-border/50 rounded-lg mb-3 md:mb-4 last:mb-0 bg-card/50 backdrop-blur-sm overflow-hidden', className)}
+      className={cn('border border-border/50 rounded-lg mb-3 md:mb-4 last:mb-0 bg-card/50 backdrop-blur-sm', className)}
       {...props}
     />
   )
@@ -31,19 +31,21 @@ function AccordionTrigger({
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Trigger>) {
   return (
-    <AccordionPrimitive.Header className="flex">
+    <AccordionPrimitive.Header className="flex w-full">
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between rounded-md py-4 md:py-5 px-4 md:px-6 text-left text-sm md:text-base font-medium transition-colors duration-150 outline-none hover:text-primary focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180',
+          'focus-visible:border-ring focus-visible:ring-ring/50 flex w-full items-start justify-between rounded-md py-4 md:py-5 px-4 md:px-6 text-left text-sm md:text-base font-medium transition-colors duration-150 outline-none hover:text-primary focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 min-h-[3rem] md:min-h-[3.5rem]',
           className,
         )}
         {...props}
       >
-        <div className="flex-1 min-w-0 pr-12 md:pr-16">
-          <span className="leading-tight block break-words">{children}</span>
+        <div className="flex-1 min-w-0 pr-3">
+          <span className="leading-relaxed block break-words hyphens-auto">{children}</span>
         </div>
-        <ChevronDownIcon className="text-muted-foreground pointer-events-none size-4 md:size-5 shrink-0 translate-y-0.5 transition-transform duration-150 ease-out ml-3" />
+        <div className="flex-shrink-0 ml-3 mt-0.5">
+          <ChevronDownIcon className="text-muted-foreground pointer-events-none size-4 md:size-5 transition-transform duration-150 ease-out" />
+        </div>
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   )
