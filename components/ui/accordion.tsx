@@ -31,20 +31,20 @@ function AccordionTrigger({
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Trigger>) {
   return (
-    <AccordionPrimitive.Header className="flex w-full">
+    <AccordionPrimitive.Header className="flex">
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          'focus-visible:border-ring focus-visible:ring-ring/50 flex w-full items-start justify-between rounded-md py-4 md:py-5 px-4 md:px-6 text-left text-sm md:text-base font-medium transition-colors duration-150 outline-none hover:text-primary focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 min-h-[3rem] md:min-h-[3.5rem]',
+          'group relative w-full text-left outline-none transition-colors duration-150 hover:text-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
           className,
         )}
         {...props}
       >
-        <div className="flex-1 min-w-0 pr-3">
-          <span className="leading-relaxed block break-words hyphens-auto">{children}</span>
-        </div>
-        <div className="flex-shrink-0 ml-3 mt-0.5">
-          <ChevronDownIcon className="text-muted-foreground pointer-events-none size-4 md:size-5 transition-transform duration-150 ease-out" />
+        <div className="flex items-start justify-between gap-4 py-4 md:py-5 px-4 md:px-6">
+          <div className="flex-1 text-sm md:text-base font-medium leading-relaxed break-words">
+            {children}
+          </div>
+          <ChevronDownIcon className="h-4 w-4 md:h-5 md:w-5 shrink-0 text-muted-foreground transition-transform duration-200 group-data-[state=open]:rotate-180 mt-1" />
         </div>
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
