@@ -19,7 +19,7 @@ function AccordionItem({
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
-      className={cn('border-b border-border/50 last:border-b-0 rounded-lg mb-2 last:mb-0 bg-card/50 backdrop-blur-sm', className)}
+      className={cn('border border-border/50 rounded-lg mb-3 md:mb-4 last:mb-0 bg-card/50 backdrop-blur-sm overflow-hidden', className)}
       {...props}
     />
   )
@@ -35,15 +35,15 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between rounded-md py-3 md:py-4 px-2 md:px-4 text-left text-sm md:text-base font-medium transition-colors duration-150 outline-none hover:text-primary focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180',
+          'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between rounded-md py-4 md:py-5 px-4 md:px-6 text-left text-sm md:text-base font-medium transition-colors duration-150 outline-none hover:text-primary focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180',
           className,
         )}
         {...props}
       >
-        <div className="flex-1 min-w-0" style={{ paddingRight: '60px' }}>
-          <span className="leading-tight block">{children}</span>
+        <div className="flex-1 min-w-0 pr-12 md:pr-16">
+          <span className="leading-tight block break-words">{children}</span>
         </div>
-        <ChevronDownIcon className="text-muted-foreground pointer-events-none size-4 md:size-5 shrink-0 translate-y-0.5 transition-transform duration-150 ease-out" />
+        <ChevronDownIcon className="text-muted-foreground pointer-events-none size-4 md:size-5 shrink-0 translate-y-0.5 transition-transform duration-150 ease-out ml-3" />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   )
@@ -60,7 +60,7 @@ function AccordionContent({
       className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm md:text-base transition-all duration-200 ease-out"
       {...props}
     >
-      <div className={cn('pt-0 pb-4 px-2 md:px-4', className)}>{children}</div>
+      <div className={cn('pt-0 pb-4 md:pb-6 px-4 md:px-6', className)}>{children}</div>
     </AccordionPrimitive.Content>
   )
 }

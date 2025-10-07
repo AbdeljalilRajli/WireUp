@@ -89,7 +89,7 @@ export function FAQSection() {
                 transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
               >
                 <AccordionItem value={`item-${index}`}>
-                  <AccordionTrigger className="text-left hover:text-primary pr-16 md:pr-20">
+                  <AccordionTrigger className="text-left hover:text-primary">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground leading-relaxed">
