@@ -16,7 +16,7 @@ const processes = [
   },
   {
     number: "02",
-    title: "Research and Strategy Development",
+    title: "Research and Strategy",
     description:
       "We conduct thorough market research and develop a comprehensive recruitment strategy aligned with your business objectives and industry best practices.",
     color: "bg-muted",
