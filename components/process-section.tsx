@@ -11,48 +11,36 @@ const processes = [
     title: "Consultation",
     description:
       "During the initial consultation, we will discuss your business goals and objectives, target audience, and current recruitment challenges. This will allow us to understand your needs and tailor our services to best fit your requirements.",
-    color: "bg-primary",
-    textColor: "text-white",
   },
   {
     number: "02",
     title: "Research and Strategy",
     description:
       "We conduct thorough market research and develop a comprehensive recruitment strategy aligned with your business objectives and industry best practices.",
-    color: "bg-muted",
-    textColor: "text-foreground",
   },
   {
     number: "03",
     title: "Implementation",
     description:
       "Our team implements the recruitment strategy, leveraging our platform's AI-powered tools and automation to streamline your hiring process.",
-    color: "bg-muted",
-    textColor: "text-foreground",
   },
   {
     number: "04",
     title: "Monitoring and Optimization",
     description:
       "We continuously monitor performance metrics and optimize the recruitment process to ensure maximum efficiency and quality of hires.",
-    color: "bg-muted",
-    textColor: "text-foreground",
   },
   {
     number: "05",
     title: "Reporting and Communication",
     description:
       "Regular reports and transparent communication keep you informed about progress, metrics, and insights throughout the recruitment journey.",
-    color: "bg-muted",
-    textColor: "text-foreground",
   },
   {
     number: "06",
     title: "Continual Improvement",
     description:
       "We believe in ongoing optimization. Our team regularly reviews and refines strategies to adapt to market changes and improve results.",
-    color: "bg-muted",
-    textColor: "text-foreground",
   },
 ]
 
@@ -101,10 +89,14 @@ export function ProcessSection() {
                   <div className="flex items-center gap-4 flex-1 min-w-0">
                     <span className={`text-3xl font-bold w-10 sm:w-12 text-center ${
                       openIndex === index ? "text-white" : "text-foreground"
-                    }`}>{process.number}</span>
+                    }`}>
+                      {process.number}
+                    </span>
                     <h3 className={`text-xl leading-snug font-bold break-words hyphens-auto text-pretty ${
                       openIndex === index ? "text-white" : "text-foreground"
-                    }`}>{process.title}</h3>
+                    }`}>
+                      {process.title}
+                    </h3>
                   </div>
                   <motion.div
                     animate={{ rotate: openIndex === index ? 180 : 0 }}

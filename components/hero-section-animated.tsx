@@ -1,8 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import { ArrowRight, Star } from "lucide-react"
-import { ShimmerButton } from "@/components/ui/shimmer-button"
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 
